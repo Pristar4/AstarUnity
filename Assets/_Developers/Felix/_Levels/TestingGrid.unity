@@ -288,8 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a65bc840baaa4beeb66bf0df854ae995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Width: 32
-  Height: 32
+  width: 64
+  height: 64
   square: {fileID: 5820220121001156811, guid: 90a47bb19327a1241943c9244b26659c, type: 3}
   dynamic: {fileID: 1927485971}
 --- !u!1 &994901411
