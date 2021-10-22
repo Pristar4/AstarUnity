@@ -1,6 +1,4 @@
 using UnityEngine;
-using Random = UnityEngine.Random;
-
 
 namespace _Developers.Felix
 {
