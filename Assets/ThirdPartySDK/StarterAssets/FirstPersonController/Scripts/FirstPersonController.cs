@@ -63,6 +63,11 @@ namespace StarterAssets
         [Tooltip("How far in degrees can you move the camera down")]
         public float BottomClamp = -90.0f;
 
+        public float crouchScale = 0.6f;
+
+        // root
+        [SerializeField] private GameObject root;
+
         // cinemachine
         private float _cinemachineTargetPitch;
 
@@ -93,6 +98,9 @@ namespace StarterAssets
         {
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
+
+            // reference child transforms
+
 
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
@@ -155,6 +163,17 @@ namespace StarterAssets
 
         private void Move()
         {
+            //crouch behavior
+            if (_input.crouch)
+            {
+                gameObject.transform.localScale = new Vector3(1, crouchScale, 1);
+            }
+            else
+            {
+                gameObject.transform.localScale = new Vector3(1, 1, 1);
+            }
+
+
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
@@ -197,6 +216,7 @@ namespace StarterAssets
                 // move
                 inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
             }
+
 
             // move the player
             _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) +

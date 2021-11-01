@@ -11,6 +11,7 @@ namespace StarterAssets
         public Vector2 look;
         public bool jump;
         public bool sprint;
+        public bool crouch;
 
         [Header("Movement Settings")] public bool analogMovement;
 
@@ -42,6 +43,11 @@ namespace StarterAssets
         {
             SprintInput(value.isPressed);
         }
+
+        public void OnCrouch(InputValue value)
+        {
+            CrouchInput(value.isPressed);
+        }
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
@@ -65,6 +71,11 @@ namespace StarterAssets
         public void SprintInput(bool newSprintState)
         {
             sprint = newSprintState;
+        }
+
+        public void CrouchInput(bool newCrouchState)
+        {
+            crouch = newCrouchState;
         }
 
 #if !UNITY_IOS || !UNITY_ANDROID
